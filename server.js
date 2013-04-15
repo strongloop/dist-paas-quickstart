@@ -54,8 +54,10 @@ var StrongLoopApp = function() {
     } catch(err) {
     }
 
-    self.ipaddress = process.env.STRONGLOOP_HOST || '127.0.0.1';
-    self.port      = process.env.STRONGLOOP_PORT || 3000;
+    self.ipaddress = process.env.STRONGLOOP_HOST ||
+                     process.env.VCAP_HOST || '0.0.0.0';
+    self.port      = process.env.STRONGLOOP_PORT ||
+                     process.env.VCAP_PORT  || process.env.PORT || 3000;
     self.app_name  = cfg.name || 'StrongLoop-Sample-App';
 
     NODEFLY_API_TOKEN && self._enableProfiling();

@@ -50,15 +50,15 @@ Create an account on http://heroku.com/
 
 Install the Heroku toolbelt
 
-     See: https://toolbelt.heroku.com/ for instructions
+    See: https://toolbelt.heroku.com/ for instructions
 
 Login into the Heroku:
 
-     heroku login
+    heroku login
 
 Clone this sample application
 
-     git clone git://github.com/ramr/strongloop-quickstart-app.git dynode
+    git clone git://github.com/ramr/strongloop-paas-quickstart.git dynode
 
 Change directory to your application and optionally edit the StrongLoop
 configuration if you wish to and commit those changes.
@@ -142,7 +142,7 @@ Login into the CloudFoundry PaaS:
 
 Clone this quickstart:
 
-    git clone git@github.com:ramr/strongloop-paas-quickstart.git
+    git clone git://github.com/ramr/strongloop-paas-quickstart.git dynode
 
 Install the required packages and optionally lock 'em down:
 
