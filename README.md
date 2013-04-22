@@ -68,12 +68,13 @@ configuration if you wish to and commit those changes.
     git add strongloop
     git commit . -m 'Added StrongLoop config files'
 
-Install the required packages and optionally lock 'em down:
+Install the required packages and optionally lock 'em down (set 'in-stone'
+the versions of the dependent packages you want to use):
 
     npm install
     npm shrinkwrap
 
-You can optionally run the application locally by just running:
+You can also run the application locally via:
 
     npm start
 
@@ -112,6 +113,14 @@ Add this `github strongloop-paas-quickstart` repository
     git remote add upstream -m master git@github.com:ramr/strongloop-paas-quickstart.git
     git pull -s recursive -X theirs upstream master
 
+Change directory to your application and optionally edit the StrongLoop
+configuration if you wish to and commit those changes.
+
+    cd dynode
+    # vi/edit strongloop/*
+    git add strongloop
+    git commit . -m 'Added StrongLoop config files'
+
 Then push the repo to OpenShift
 
     git push
@@ -121,28 +130,58 @@ That's it, you can now checkout your application at:
     http://slnode-$yournamespace.rhcloud.com
 
 
-*work-in-progress*
-
 Deploying on CloudFoundry:
 --------------------------
 
 Create an account on http://cloudfoundry.com/
 
-Install the vmc command line tools
+For now, you will also need to register for the test/beta env @
+
+    http://console.a1.cf-app.com/register 
+
+
+Install the cf command line tools
+
+     sudo gem install cf --pre
+
+     #  If you run into issues w/ dependencies if you have the older vmc
+     #  tools installed, then try uninstalling the vmc tools + other
+     #  gems and run something like:
+     #  sudo gem uninstall vmc cf
+     #  sudo gem uninstall tunnel-cf-plugin cf-uaa-lib manifests-cf-plugin
+     #  sudo gem uninstall caldecott-client cfoundry
+     #
+     #  sudo gem install cfoundry
+     #  sudo gem install cf --pre
+     #  sudo gem install cfoundry --pre
+     #  sudo gem install manifests-cf-plugin --pre
 
      See: http://docs.cloudfoundry.com/tools/vmc/installing-vmc.html
 
-Target the CloudFoundry PaaS:
-
-     vmc target https://api.cloudfoundry.com
-
 Login into the CloudFoundry PaaS:
 
-     vmc login
+     cf login
+
+Target the CloudFoundry PaaS:
+
+     #  Normally, this would just be:
+     #  cf target https://api.cloudfoundry.com
+
+     #  But for the buildpack support, you will need to target the
+     #  test/beta environment instead.
+     cf target api.a1.cf-app.com
 
 Clone this quickstart:
 
     git clone git://github.com/ramr/strongloop-paas-quickstart.git dynode
+
+Change directory to your application and optionally edit the StrongLoop
+configuration if you wish to and commit those changes.
+
+    cd dynode
+    # vi/edit strongloop/*
+    git add strongloop
+    git commit . -m 'Added StrongLoop config files'
 
 Install the required packages and optionally lock 'em down:
 
@@ -153,19 +192,19 @@ You can optionally run the application locally by just running:
 
     npm start
 
-And when you are satisfied or then since this is a PaaS specific
-quickstart, just push to CloudFoundry:
+And when you are satisfied that all's ok, push your app to CloudFoundry.
 
-    vmc push
+    cf push dynode
+      --buildpack=git://github.com/ramr/strongloop-buildpack.git
+      --no-create-services --instances 1 --memory 128M
 
-Note:  The first time you run vmc push, this will create a new application
-       at CloudFoundry and you will need to specify the app name
-       `example: slnode-app`, number of instances `example: 1`,
-       framework `node`, runtime `node08` (yeah bit klunky as the PaaS
-       environments have older versions), memory `example: 256M`,
-       domain `example: slnode-app.cloudfoundry.com`,
-       any other services `example: n`.
+Note:  The first time you run vmc push, you will need to specify all the
+       parameters - this will create a new application at CloudFoundry.
+       domain `example: slnode-app.cloudfoundry.com`.
        And save the configuration `example: y`.
+
+Subsequent pushes just need the `cf push` command - you only need to
+specify all those options the first time you create the app (push).
 
 This will now download and configure StrongLoop Node on CloudFoundry,
 install the dependencies as specified in the sample application's
@@ -174,6 +213,6 @@ package.json file (or npm-shrinkwrap.json if one exists).
 That's it, you can now checkout your StrongLoop Node application at the
 app url/domain you set for your CloudFoundry app.
 
-    Example:  http://slnode-app.cloudfoundry.com/
+    Example:  http://dynode.cloudfoundry.com/
 
 
