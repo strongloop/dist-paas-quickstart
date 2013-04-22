@@ -58,7 +58,7 @@ Login into the Heroku:
 
 Clone this sample application
 
-    git clone git://github.com/ramr/strongloop-paas-quickstart.git dynode
+    git clone git://github.com/strongloop/dist-paas-quickstart.git dynode
 
 Change directory to your application and optionally edit the StrongLoop
 configuration if you wish to and commit those changes.
@@ -81,7 +81,7 @@ You can also run the application locally via:
 And when you are satisfied that all's ok, just push your app to Heroku:
 
     #  Create an app with this buildpack and push to it.
-    heroku apps:create -b git://github.com/ramr/strongloop-buildpack.git
+    heroku apps:create -b git://github.com/strongloop/dist-paas-buildpack.git
     git push heroku master
 
 This will now download and configure StrongLoop Node on Heroku, install
@@ -110,7 +110,7 @@ Create a nodejs-0.6 application (you can name it anything via -a)
 Add this `github strongloop-paas-quickstart` repository
 
     cd slnode
-    git remote add upstream -m master git@github.com:ramr/strongloop-paas-quickstart.git
+    git remote add upstream -m master git://github.com/strongloop/dist-paas-quickstart.git
     git pull -s recursive -X theirs upstream master
 
 Change directory to your application and optionally edit the StrongLoop
@@ -173,7 +173,7 @@ Target the CloudFoundry PaaS:
 
 Clone this quickstart:
 
-    git clone git://github.com/ramr/strongloop-paas-quickstart.git dynode
+    git clone git://github.com/strongloop/dist-paas-quickstart.git dynode
 
 Change directory to your application and optionally edit the StrongLoop
 configuration if you wish to and commit those changes.
@@ -194,8 +194,8 @@ You can optionally run the application locally by just running:
 
 And when you are satisfied that all's ok, push your app to CloudFoundry.
 
-    cf push dynode
-      --buildpack=git://github.com/ramr/strongloop-buildpack.git
+    cf push dynode                                                     \
+      --buildpack=git://github.com/strongloop/dist-paas-buildpack.git  \
       --no-create-services --instances 1 --memory 128M
 
 Note:  The first time you run vmc push, you will need to specify all the
