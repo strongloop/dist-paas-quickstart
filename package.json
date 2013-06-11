@@ -8,7 +8,7 @@
               ],
 
   "author": {
-     "name": "ramr",
+     "name": "StrongLoop",
      "url": "https://github.com/strongloop/dist-paas-quickstart"
   },
 
@@ -18,11 +18,13 @@
   },
 
   "dependencies": {
+    "nodefly":   "stable",
     "ejs":       "latest",
     "express":   "latest"
   },
 
   "devDependencies": {
+    "nodefly":   "stable",
     "ejs":       "latest",
     "express":   "latest"
   },
