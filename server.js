@@ -2,7 +2,7 @@
 
 require('nodefly').profile(
     process.env.NODEFLY_APPLICATION_KEY,
-    ['StrongLoop','Heroku']
+    ['StrongLoop', process.env.STRONGLOOP_PLATFORM]
 );
 
 var express = require('express');
