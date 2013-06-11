@@ -1,5 +1,10 @@
 #!/bin/env node
 
+require('nodefly').profile(
+    process.env.NODEFLY_APPLICATION_KEY,
+    ['StrongLoop','Heroku']
+);
+
 var express = require('express');
 
 var slutils = require('./lib/utils/slutils.js');
