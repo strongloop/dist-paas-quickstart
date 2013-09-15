@@ -18,15 +18,12 @@
   },
 
   "dependencies": {
-    "nodefly":   "stable",
+    "strong-agent":   "latest",
     "ejs":       "latest",
     "express":   "latest"
   },
 
   "devDependencies": {
-    "nodefly":   "stable",
-    "ejs":       "latest",
-    "express":   "latest"
   },
 
   "bundleDependencies": [],
