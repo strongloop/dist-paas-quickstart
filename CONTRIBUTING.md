@@ -14,7 +14,7 @@ Contributing to `StrongLoop-SampleApp` is easy. In a few simple steps:
   * Adhere to code style outlined in the [Google C++ Style Guide][] and
     [Google Javascript Style Guide][].
 
-  * Sign the [Contributor License Agreement](https://cla.strongloop.com/strongloop/dist-paas-quickstart)
+  * Sign the [Contributor License Agreement](https://cla.strongloop.com/agreements/strongloop/dist-paas-quickstart)
 
   * Submit a pull request through Github.
 
